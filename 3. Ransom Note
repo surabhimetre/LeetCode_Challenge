@@ -31,3 +31,44 @@ class Solution(object):
         else:
             return False
         
+#Dictionary Approach
+
+ dict1=dict.fromkeys(magazine,0)
+        dict2=dict.fromkeys(ransomNote,0)
+        for i in range(0,len(magazine)):
+            char=magazine[i]
+            dict1[char]=dict1[char]+1
+        for i in range(0,len(ransomNote)):
+            char=ransomNote[i]
+            dict2[char]=dict2[char]+1
+        count=0
+        for key,value in dict2.items():
+            if key in dict1:
+                val1=dict1[key]
+            else:
+                break
+            val2=dict2[key]
+            if(val1>=val2):
+                count=count+val2
+        if(count==len(ransomNote)):
+            return True
+        else:
+            False
+            
+     #LIST APPROACH
+     
+     l1=list(magazine)
+        l2=list(ransomNote)
+        flag=1
+        for i in range(0,len(l2)):
+            char=l2[i]
+            if char in l1:
+                flag=1
+                l1.remove(char)
+            else:
+                flag=0
+                break
+        if(flag):
+            return True
+        else:
+            return False
