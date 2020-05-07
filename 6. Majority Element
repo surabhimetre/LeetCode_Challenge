@@ -1,0 +1,39 @@
+Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
+
+You may assume that the array is non-empty and the majority element always exist in the array.
+
+Example 1:
+
+Input: [3,2,3]
+Output: 3
+Example 2:
+
+Input: [2,2,1,1,1,2,2]
+Output: 2
+
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        max_count=0
+        max_val=0
+        count=0
+        new_list=sorted(nums)
+        i=0
+        while(i<=len(new_list)):
+            count=count+1
+            if(i==len(new_list)-1):
+                if(max_count<count):
+                    max_count=count
+                    max_val=new_list[i]
+                    count=0
+                break
+            if(new_list[i]!=new_list[i+1]):
+                if(max_count<count):
+                    max_count=count
+                    max_val=new_list[i]
+                    count=0
+            i=i+1
+        return max_val
