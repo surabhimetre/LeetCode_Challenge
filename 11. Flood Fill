@@ -1,0 +1,80 @@
+An image is represented by a 2-D array of integers, each integer representing the pixel value of the image (from 0 to 65535).
+Given a coordinate (sr, sc) representing the starting pixel (row and column) of the flood fill, and a pixel value newColor, "flood fill" the image.
+To perform a "flood fill", consider the starting pixel, plus any pixels connected 4-directionally to the starting pixel of the same color as the starting pixel, plus any pixels connected 4-directionally to those pixels (also with the same color as the starting pixel), and so on. 
+Replace the color of all of the aforementioned pixels with the newColor.
+At the end, return the modified image.
+
+Example 1:
+Input: 
+image = [[1,1,1],[1,1,0],[1,0,1]]
+sr = 1, sc = 1, newColor = 2
+Output: [[2,2,2],[2,2,0],[2,0,1]]
+Explanation: 
+From the center of the image (with position (sr, sc) = (1, 1)), all pixels connected 
+by a path of the same color as the starting pixel are colored with the new color.
+Note the bottom corner is not colored 2, because it is not 4-directionally connected
+to the starting pixel.
+
+Note:
+The length of image and image[0] will be in the range [1, 50].
+The given starting pixel will satisfy 0 <= sr < image.length and 0 <= sc < image[0].length.
+The value of each color in image[i][j] and newColor will be an integer in [0, 65535].
+
+class Solution(object):
+    def floodFill(self, image, sr, sc, newColor):
+        """
+        :type image: List[List[int]]
+        :type sr: int
+        :type sc: int
+        :type newColor: int
+        :rtype: List[List[int]]
+        
+        rows=len(image)
+        cols=len(image[0])
+        print(rows,cols)
+        oldColor=image[sr][sc]
+        def traverse(r,c,image):
+            print(r,c)
+            if(image[r][c]==oldColor and image[r][c]!=newColor):
+                image[r][c]=newColor
+                if r < (rows - 1):
+                    print("r<rows")
+                    image=traverse(r+1,c,image)
+                if c < (cols-1):
+                    print("c<cols")
+                    image=traverse(r,c+1,image)
+                if r > 0:
+                    print("r>0")
+                    image=traverse(r-1,c,image)
+                if c > 0:
+                    print("c<0")
+                    image=traverse(r,c-1,image)
+                
+                
+                
+                if(c>0):
+                    print("c>0",r,c-1)
+                    image=traverse(r,c-1,image)
+                else:
+                    if(r>0):
+                        print("r>0")
+                        image=traverse(r-1,c,image)
+                if(c<(cols-1)):
+                    print("c<sc",r,c+1)
+                    image=traverse(r,c+1,image)
+                else:
+                    if(r<(rows-1)):
+                        print("r<sr",r+1,c)
+                        image=traverse(r+1,c,image)
+        image=traverse(sr,sc,image)
+        return image"""
+        def fill(r, c):
+            if 0 <= r < len(image) and 0 <= c < len(image[0]) and image[r][c] != newColor and image[r][c] == oldColor:
+                image[r][c] = newColor
+                fill(r+1, c)
+                fill(r, c+1)
+                fill(r-1, c)
+                fill(r, c-1)
+        oldColor = image[sr][sc]
+        fill(sr, sc)
+        return image
