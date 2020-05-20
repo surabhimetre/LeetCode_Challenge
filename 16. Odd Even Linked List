@@ -22,7 +22,7 @@ The first node is considered odd, the second node even and so on ...
 class Solution(object):
     def oddEvenList(self, head):
         """
-        :type head: ListNode
+        :type head: ListNode 
         :rtype: ListNode
         """
         odd_ptr=head
