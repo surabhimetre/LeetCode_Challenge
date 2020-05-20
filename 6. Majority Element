@@ -17,6 +17,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        
         max_count=0
         max_val=0
         count=0
