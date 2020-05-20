@@ -25,7 +25,7 @@ class Solution:
         a_counter=Counter(s1)
         idx=[]
         count=0
-        #print(a_counter)
+        #print(a_counter) 
         for i in range(0,len(s2)-incr):
             substr=s2[i:i+ana_len]
             count=0
