@@ -71,3 +71,4 @@ class Solution(object):
             if(found==0 and count==(N-1)):
                 return judge
         return -1"""
+
