@@ -22,6 +22,7 @@ class Solution(object):
         :type num: int
         :rtype: int
         """
+        
         complement=""
         binary_str="{0:b}".format(num)
         for i in range(0,len(binary_str)):
