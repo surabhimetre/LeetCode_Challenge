@@ -57,6 +57,7 @@ class Solution(object):
             
      #LIST APPROACH
      
+     
      l1=list(magazine)
         l2=list(ransomNote)
         flag=1
