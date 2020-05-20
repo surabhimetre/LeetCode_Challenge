@@ -18,6 +18,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         
+        
         l=[]
         for i in range(0,len(nums)):
             val=nums[i]
