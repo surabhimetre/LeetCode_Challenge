@@ -30,4 +30,4 @@ class Solution(object):
             if stone in J:
                 count=count+1
         return count
-        
+       
